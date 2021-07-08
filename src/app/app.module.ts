@@ -4,10 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// components
+import { CharacterListComponent } from '@components/character-list/character-list.component';
+import { WeaponListComponent } from '@components/weapon-list/weapon-list.component';
+import { PageNotFoundComponent } from '@components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CharacterListComponent,
+    WeaponListComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
