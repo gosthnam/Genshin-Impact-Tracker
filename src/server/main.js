@@ -1,4 +1,5 @@
 const {app, BrowserWindow, ipcMain} = require('electron');
+require('./database/db-query');
 
 let win;
 
@@ -22,11 +23,6 @@ function createWindow() {
 }
 
 app.on('ready', createWindow);
-
-ipcMain.on('asynchronous-message', (event, arg) => {
-    console.log(arg);
-    event.reply('asynchronous-message', "pong");
-  });
 
 app.on('window-all-closed', function() {
     if (process.platform !== 'darwin') {

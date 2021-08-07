@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ElectronService } from 'ngx-electron';
+import { QueryService } from '@services/query.service';
 
 @Component({
   selector: 'app-character-list',
@@ -8,23 +8,16 @@ import { ElectronService } from 'ngx-electron';
 })
 export class CharacterListComponent implements OnInit {
 
-  constructor(private _electronService: ElectronService) { }
+  constructor(private queries: QueryService) { 
+  }
 
   ngOnInit(): void {
   }
 
   testDatabase(): void {
-    console.log(this._electronService);
-    if (this._electronService.isElectronApp) {
-      this._electronService.ipcRenderer.on('asynchronous-message', (event, arg) => {
-        console.log(arg);
-        
-      });
+    this.queries.allCharacter(['all']).subscribe(res => {
+      console.log(res);
       
-      this._electronService.ipcRenderer.send('asynchronous-message', 'ping');
-    } else {
-      console.log('meh');
-    }
-    
+    });
   }
 }
