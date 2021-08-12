@@ -15,7 +15,9 @@ ipcMain.on('character', (event, arg) => {
     switch(arg[0]) {
         case 'all':
         default:
-            sql = 'SELECT * FROM character'
+            sql = ` SELECT * 
+                    FROM character
+                    ORDER BY name`
             break;
     }
 

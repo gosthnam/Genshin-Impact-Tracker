@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { QueryService } from '@services/query.service';
+import { ActivatedRoute } from '@angular/router';
+import { Character } from '@shared/character.service';
 
 @Component({
   selector: 'app-character-list',
@@ -7,17 +8,21 @@ import { QueryService } from '@services/query.service';
   styleUrls: ['./character-list.component.scss']
 })
 export class CharacterListComponent implements OnInit {
+  public characters!: Character[];
 
-  constructor(private queries: QueryService) { 
+  constructor(private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.activatedRoute.data.subscribe(data => {
+      this.characters = data.characters;
+      console.log(data);
+      
+    });
   }
 
   testDatabase(): void {
-    this.queries.allCharacter(['all']).subscribe(res => {
-      console.log(res);
-      
-    });
+    console.log(this.characters);
+    
   }
 }
