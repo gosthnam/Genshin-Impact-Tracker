@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 // material-ui
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 // components
 import { CharacterListComponent } from '@components/character-list/character-list.component';
 import { WeaponListComponent } from '@components/weapon-list/weapon-list.component';
@@ -24,7 +25,8 @@ import { PageNotFoundComponent } from '@components/page-not-found/page-not-found
     AppRoutingModule,
     NgxElectronModule,
     BrowserAnimationsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

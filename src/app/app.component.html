@@ -4,4 +4,7 @@
         <li><a routerLink="/weapon-list" routerLinkActive="active">Weapon List</a></li>
     </ul>
 </nav>
+<div *ngIf="loading">
+    <mat-spinner></mat-spinner>
+</div>
 <router-outlet></router-outlet>
