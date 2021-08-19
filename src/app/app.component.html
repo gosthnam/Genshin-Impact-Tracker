@@ -1,10 +1,23 @@
-<nav>
-    <ul>
-        <li><a routerLink="/character-list" routerLinkActive="active">Character List</a></li>
-        <li><a routerLink="/weapon-list" routerLinkActive="active">Weapon List</a></li>
-    </ul>
-</nav>
-<div *ngIf="loading">
-    <mat-spinner></mat-spinner>
-</div>
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side" disableClose="true" opened="true">
+        <mat-nav-list>
+            <mat-list-item (click)="isExpanded = !isExpanded">
+                <img class="nav-image" src="assets/Intertwined_Fate.png">
+            </mat-list-item>
+            <mat-list-item routerLink="/character-list" routerLinkActive="active">
+                <img class="nav-image" src="assets/Characters.png">
+                <span *ngIf="isExpanded"> Characters</span>
+            </mat-list-item>
+            <mat-list-item routerLink="/weapon-list" routerLinkActive="active">
+                <img class="nav-image" src="assets/Weapons.png">
+                <span *ngIf="isExpanded"> Weapons</span>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div *ngIf="loading">
+            <mat-spinner></mat-spinner>
+        </div>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

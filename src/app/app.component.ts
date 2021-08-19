@@ -8,6 +8,7 @@ import { Event, NavigationCancel, NavigationEnd, NavigationError, NavigationStar
 })
 export class AppComponent {
   title = 'Genshin-Impact-Tracker';
+  isExpanded: boolean = true;
   loading: boolean = true;
 
   constructor(private router: Router) {
