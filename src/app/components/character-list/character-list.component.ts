@@ -20,9 +20,4 @@ export class CharacterListComponent implements OnInit {
       
     });
   }
-
-  testDatabase(): void {
-    console.log(this.characters);
-    
-  }
 }

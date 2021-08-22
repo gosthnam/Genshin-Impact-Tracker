@@ -13,6 +13,6 @@ export class CharactersResolverService implements Resolve<Character[]> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): 
   Observable<Character[]> | Promise<Character[]> | Character[] {
-    return this.queries.allCharacter(['all']);
+    return this.queries.allCharacter();
   }
 }

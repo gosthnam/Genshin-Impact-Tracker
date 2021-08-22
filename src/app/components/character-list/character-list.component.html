@@ -1,14 +1,16 @@
-<button (click)="testDatabase()">Test</button>
-<mat-accordion>
+<mat-accordion class="headers-align" multi>
     <mat-expansion-panel *ngFor="let character of characters">
       <mat-expansion-panel-header>
         <mat-panel-title>
           {{character.name}}
         </mat-panel-title>
         <mat-panel-description>
-          {{character.weapon}}
+          <div class="icons">
+            <img class="weapon-image" src="{{'assets/elements/' + character.element + '.png'}}">
+            <img class="weapon-image" src="{{'assets/weapons/' + character.weapon + '.png'}}">
+          </div>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>Ok</p>
+      
     </mat-expansion-panel>
 </mat-accordion>
