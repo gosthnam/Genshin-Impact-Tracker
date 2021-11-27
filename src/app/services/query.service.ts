@@ -11,14 +11,18 @@ import { Account } from '@shared/account.service';
 })
 export class QueryService {
   private renderer: IpcRenderer;
+  private account!: Account;
 
   constructor() {
     this.renderer = new ElectronService().ipcRenderer;
+    this.getDefaultAccount();
   }
 
-  getDefaultAccount(): Observable<Account> {
-    return new Observable<Account>(observer => {
+  // accounts
+  getDefaultAccount(): void {
+    new Observable<Account>(observer => {
       this.renderer.once('response', (event, arg) => {
+        this.account = arg;
         observer.next(arg);
         observer.complete();
       });
@@ -26,7 +30,38 @@ export class QueryService {
     });
   }
 
-  allCharacter(): Observable<Character[]> {
+  getAllAccount(): Observable<Account[]> {
+    return new Observable<Account[]>(observer => {
+      this.renderer.once('response', (event, arg: Account[]) => {
+        observer.next(arg);
+        observer.complete();
+      });
+      this.renderer.send('request', ['accounts']);
+    });
+  }
+
+  createAccount(data: string[]): Observable<Account[]> {
+    return new Observable<Account[]>(observer => {
+      this.renderer.once('response', (event, arg: Account[]) => {
+        observer.next(arg);
+        observer.complete();
+      });
+      this.renderer.send('create', data);
+    });
+  }
+
+  updateAccount(data: string[]): Observable<Account[]> {
+    return new Observable<Account[]>(observer => {
+      this.renderer.once('response', (event, arg: Account[]) => {
+        observer.next(arg);
+        observer.complete();
+      });
+      this.renderer.send('update', data);
+    })
+  }
+
+  // character
+  getAllCharacter(): Observable<Character[]> {
     return new Observable<Character[]>(observer => {
       this.renderer.once('response', (event, arg: Character[]) => {
         observer.next(arg);

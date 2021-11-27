@@ -17,7 +17,6 @@ export class CharacterListComponent implements OnInit {
     this.activatedRoute.data.subscribe(data => {
       this.characters = data.characters;
       console.log(data);
-      
     });
   }
 }

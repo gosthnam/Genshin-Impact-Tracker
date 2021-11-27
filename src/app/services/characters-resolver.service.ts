@@ -11,8 +11,8 @@ export class CharactersResolverService implements Resolve<Character[]> {
 
   constructor(private queries: QueryService) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): 
-  Observable<Character[]> | Promise<Character[]> | Character[] {
-    return this.queries.allCharacter();
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
+    Observable<Character[]> | Promise<Character[]> | Character[] {
+    return this.queries.getAllCharacter();
   }
 }
